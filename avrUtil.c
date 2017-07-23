@@ -8,11 +8,12 @@
 #include <avr/io.h>
 #include <stdlib.h>
 
+#include "usart.h"
 #include "avrUtil.h"
 
 char *getHexValue(uint8_t dValue)
 {
-	static char    hexadecimalnum[2] ;    //static so can use pointer
+	static char    hexadecimalnum[3] ;    //static so can use pointer
 	int            j = 0 ;
 	uint8_t        remainder ;
 	uint8_t        quotient ;
@@ -20,7 +21,7 @@ char *getHexValue(uint8_t dValue)
 	quotient = dValue ;
 		
 	while(quotient != 0){
-		
+		       
       remainder = quotient % 16;
 	  if (remainder < 10)
 	    hexadecimalnum[j++] = 48 + remainder;
@@ -29,6 +30,6 @@ char *getHexValue(uint8_t dValue)
 	  //
       quotient = quotient / 16;
 	}
-    
+   
 	return hexadecimalnum;
 }
